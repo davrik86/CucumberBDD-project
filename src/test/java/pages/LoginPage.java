@@ -3,21 +3,22 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.Driver;
 
 public class LoginPage {
     public LoginPage(){
-        PageFactory.initElements(Driver.getDriver, this);
+        PageFactory.initElements(Driver.getDriver(), this);
 
     }
     @FindBy(xpath = "//input[@name='email']")
-    WebElement emaailInput;
+    public WebElement emailInput;
 
     @FindBy(xpath = "//input[@name='password']")
-    WebElement password;
+    public WebElement password;
 
     @FindBy(xpath = "//button[text()='Login']")
-    WebElement loginButton;
+    public WebElement loginButton;
 
     @FindBy(xpath="//p[contains(text(),'These credentials')]")
-    WebElement errorMessage;
+    public WebElement errorMessage;
 }

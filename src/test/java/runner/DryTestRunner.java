@@ -4,21 +4,23 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
-@RunWith(Cucumber.class)//You are telling Junit to run test runner class as Cucumber class
-@CucumberOptions(features = "target/test-classes/features/User_Access.feature",
-                glue="step_definitions",
-                plugin = {"pretty" ,"html:target/primetech-report.html",
-                          "json:target/primetech-report.json"},
-                dryRun = true // to find  if there missing the step when dryRun= true
-               // monochrome= true-- is to prettyfy the console output
-                )
+@RunWith(Cucumber.class)//You telling junit to run the TestRunner class as a cucumber test
+@CucumberOptions(features = "src/test/resources/features/UserAccess.feature" ,
+        glue = "step_definitions",
+        plugin = {"pretty" , "html:target/primetech-report.html",
+                "json:target/primetech-report.json"},
+        dryRun = true
 
+
+
+        //strict was decommissioned from 7.0.0 but it forces the test to fail is the step is not defined in the step definition
+        //monochrome = true -- is to prettify the console output
+)
 public class DryTestRunner {
-
-
 
 }
 
+
 /**
- * This Class will allow us to execute and run our feature files/step definitions
+ * This class will allow us to execute and run our feature files/step definitions
  */

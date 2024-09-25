@@ -9,9 +9,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Login_StepDef {
-    WebDriver driver= new ChromeDriver();
+    WebDriver driver= new FirefoxDriver();
     @Given("User is navigated to saucedemo.com")
     public void user_is_navigated_to_saucedemo_com() {
 
