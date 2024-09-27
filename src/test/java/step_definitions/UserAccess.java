@@ -37,7 +37,7 @@ public class UserAccess {
     public void user_clicks_on_login_button() throws InterruptedException {
     // action.click(logP.loginButton).build().perform();
        logP.loginButton.click();
-       Thread.sleep(4000);
+//       Thread.sleep(4000);
 
 
     }

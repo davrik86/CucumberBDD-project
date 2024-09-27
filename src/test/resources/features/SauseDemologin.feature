@@ -1,3 +1,4 @@
+@SauseDemo
 Feature: Login feature
   As a user I should be able to verify that login is working as expected
 

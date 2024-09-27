@@ -5,12 +5,14 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)//You are telling Junit to run test runner class as Cucumber class
-@CucumberOptions(features = "src/test/resources/features/UserAccess.feature",
-                glue="step_definitions",
+@CucumberOptions(features = "src/test/resources/features/",
+                glue={"step_definitions","hooks"},
                 plugin = {"pretty" ,"html:target/primetech-report.html",
                           "json:target/primetech-report.json"},
-                dryRun = false // to find  if there missing the step when dryRun= true
+
                // monochrome= true-- is to prettyfy the console output
+//                tags= "(@smoke) and (not @SauseDemo)"
+                tags= "@Crater and @smoke"
                 )
 
 public class TestRunner {
