@@ -6,19 +6,35 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
 public class LoginPage {
+
+    //Constructor for the page
     public LoginPage(){
         PageFactory.initElements(Driver.getDriver(), this);
-
     }
+
+    //************ ELEMENTS *************
+
     @FindBy(xpath = "//input[@name='email']")
     public WebElement emailInput;
 
     @FindBy(xpath = "//input[@name='password']")
-    public WebElement password;
+    public WebElement passwordInput;
 
-    @FindBy(xpath = "//button[text()='Login']")
+    @FindBy(xpath = "//button[text()='Login' and @type='submit']")
     public WebElement loginButton;
 
-    @FindBy(xpath="//p[contains(text(),'These credentials')]")
-    public WebElement errorMessage;
+    @FindBy(xpath = "//p[text()='These credentials do not match our records.']")
+    public WebElement loginErrorMessageLabel;
+
+    @FindBy(xpath="//h3")
+    public WebElement settings;
+
+    @FindBy( xpath="//a[@href='/admin/items']")
+    public WebElement ItemButton;
+
+    @FindBy(xpath = "//p[text()='Error']")
+    public WebElement errorPop;
+
+
+
 }

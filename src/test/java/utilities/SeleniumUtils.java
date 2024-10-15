@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.JavascriptExecutor;
+
+import java.util.List;
 
 public class SeleniumUtils {
 
@@ -27,7 +30,43 @@ public class SeleniumUtils {
     public static void dragAndDrop(WebDriver driver , WebElement sourceElement, WebElement targetElement ){
         Actions actions = new Actions(driver);
         actions.dragAndDrop(sourceElement, targetElement).build().perform();
+
+    }
+    /**
+     * This method will send keys to an element using the JavascriptExecutor
+     * @param inputString the input that we want to send to the element
+     * @param element the element that we want to send keys to
+     */
+    public static void sendKeysUsingJavaScriptExecutor(String inputString , WebElement element){
+        //create an instance of the JavascriptExecutor
+        JavascriptExecutor js  = (JavascriptExecutor) Driver.getDriver();
+        //send the keys to the element
+        js.executeScript("arguments[0].setAttribute('value', '" + inputString +"')", element);
     }
 
+    /**
+     * This method will send keys to an element using the Actions class
+     * @param element the element that we want to send keys to
+     * @param input the input that we want to send to the element
+     */
+    public static void sendkeysWithActionsClass(WebElement element , String input){
+        Actions actions = new Actions(Driver.getDriver());
+        actions.sendKeys(element , input).build().perform();
+    }
+
+    /**
+     * This method will check if the item is in the table
+     * @param elementList the list of elements that are in the table
+     * @param itemNameToSearchFor the item name that we are looking for
+     * @return true if the item is in the table, false if the item is not in the table
+     */
+    public static boolean isItemInTable(List<WebElement> elementList , String itemNameToSearchFor){
+        for(WebElement item : elementList){
+            if(item.getText().equals(itemNameToSearchFor)){
+                return true;
+            }
+        }
+        return  false;
+    }
 
 }
