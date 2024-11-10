@@ -36,7 +36,7 @@ public class UserAccess_StepDef {
     }
     @Then("user should be logged in successfully")
     public void user_should_be_logged_in_successfully() {
-        Assert.assertTrue(loginP.settings.isDisplayed());
+        Assert.assertTrue(loginP.dashboardTab.isDisplayed());
     }
 
 

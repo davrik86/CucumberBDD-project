@@ -17,10 +17,7 @@ public class ViewInvoices {
 
     @And("user is on the Invoces page")
     public void user_is_on_the_invoces_page() throws InterruptedException {
-
         invocesPage.invocesBttn.click();
-
-
     }
     @Then("The Invoces label should be dispalyed")
     public void the_invoces_label_should_be_dispalyed() {

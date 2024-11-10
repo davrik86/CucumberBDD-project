@@ -6,7 +6,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Driver {
 
@@ -38,6 +44,27 @@ public class Driver {
                 case "safari":
                     driver=new SafariDriver();
                     break;
+                case "sauce-labs":
+                    ChromeOptions browserOptions = new ChromeOptions();
+                    browserOptions.setPlatformName("Windows 11");
+                    browserOptions.setBrowserVersion("latest");
+                    Map<String, Object> sauceOptions = new HashMap<>();
+                    sauceOptions.put("username", "oauth-davron.muminov-215a0");
+                    sauceOptions.put("accessKey", "7a456458-4faa-417c-acca-830cd69d94f2");
+                    sauceOptions.put("build", "selenium-build-10MH4");
+                    sauceOptions.put("name", "<1st Sauselab>");
+                    browserOptions.setCapability("sauce:options", sauceOptions);
+
+                    // start the session
+                    URL url = null;
+                    try {
+                        url = new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub");
+                    } catch (MalformedURLException e) {
+                        throw new RuntimeException(e);
+                    }
+                     driver = new RemoteWebDriver(url, browserOptions);
+                    break;
+
                 default:
                     System.out.println("using default browser");
                     driver = new ChromeDriver();
@@ -45,7 +72,8 @@ public class Driver {
                 case "chrome-headless":
                     System.out.println("using chrome-headless");
                     ChromeOptions chromeOptions= new ChromeOptions();
-                    chromeOptions.addArguments("--headless");
+                    chromeOptions.addArguments("--headless=old");
+//                    chromeOptions.addArguments("--window-position=-2400,-2400");
                     driver= new ChromeDriver(chromeOptions);
                     break;
                 case "firefox-headless":

@@ -26,8 +26,8 @@ public class LoginPage {
     @FindBy(xpath = "//p[text()='These credentials do not match our records.']")
     public WebElement loginErrorMessageLabel;
 
-    @FindBy(xpath="//h3")
-    public WebElement settings;
+    @FindBy(xpath="(//a[@href='/admin/dashboard'])[2]")
+    public WebElement dashboardTab;
 
     @FindBy( xpath="//a[@href='/admin/items']")
     public WebElement ItemButton;

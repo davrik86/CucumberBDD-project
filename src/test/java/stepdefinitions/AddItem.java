@@ -8,12 +8,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import pages.ItemsPage;
 import pages.LoginPage;
-import utilities.BrowserUtils;
 import utilities.ConfigurationReader;
 import utilities.Driver;
 import utilities.SeleniumUtils;
-
-import java.security.Key;
 
 public class AddItem {
 
@@ -23,15 +20,12 @@ public class AddItem {
     @Given("user is logged in successfully")
     public void user_is_logged_in_successfully() throws InterruptedException {
         driver.get(ConfigurationReader.getPropertyValue("craterURL"));
-
-        SeleniumUtils.sendkeysWithActionsClass(loginP.emailInput,"entityadmin@primetechschool.com" );
-
+        SeleniumUtils.sendkeysWithActionsClass(loginP.emailInput,"dummy@primetechschool.com" );
         SeleniumUtils.sendkeysWithActionsClass(loginP.passwordInput,"primetech@school");
-
         loginP.loginButton.click();
 
 
-        Assert.assertTrue(loginP.settings.isDisplayed());
+        Assert.assertTrue(loginP.dashboardTab.isDisplayed());
         loginP.ItemButton.click();
 
     }

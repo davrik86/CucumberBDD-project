@@ -17,16 +17,12 @@ public class AddNewInvoces {
     @Given("user lick on the Add New Invoice button.")
     public void user_lick_on_the_add_new_invoice_button() throws InterruptedException {
         newInvoces.newInvoceBttn.click();
-
     }
     @And("user selects a client from New Customer dropdown, and Item from Item dropdown")
     public void user_selects_a_client_from_new_customer_dropdown_and_item_from_item_dropdown() throws InterruptedException {
         newInvoces.SelectCustomerBttn.click();
-
         newInvoces.NewCustomerdropdown.click();
         newInvoces.InvoiceSelctCustomer.click();
-
-
     }
     @And("enter a quantity of {string} , enter price {string}")
     public void enter_a_quantity_of_enter_price(String qnt, String price) throws InterruptedException {
